@@ -23,6 +23,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard and tasks (protected routes)
 Route::middleware('auth')->group(function () {
+    Route::get('/tasks/profile', [AuthController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/tasks/profile', [AuthController::class, 'updateProfile'])->name('profile.update');
+
     // Tasks resource routes
     Route::resource('tasks', TaskController::class);
 

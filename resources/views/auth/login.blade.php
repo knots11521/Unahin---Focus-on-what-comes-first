@@ -16,7 +16,7 @@
             </label>
             <div class="relative">
                 <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus
-                    class="w-full px-4 py-3 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400"
+                    class="app-input px-4 py-3 text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
                     placeholder="nathaniel@example.com">
             </div>
             @error('email')
@@ -38,7 +38,7 @@
                 @endif
             </div>
             <input type="password" name="password" id="password" required
-                class="w-full px-4 py-3 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all"
+                class="app-input px-4 py-3 text-slate-900 dark:text-slate-100"
                 placeholder="••••••••">
             @error('password')
                 <p class="text-red-500 text-xs mt-2 font-medium">{{ $message }}</p>
@@ -57,7 +57,7 @@
 
         <div class="pt-2">
             <button type="submit"
-                class="w-full py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-[14px] shadow-lg shadow-brand-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                class="app-btn app-btn-primary w-full py-3.5 font-bold active:scale-[0.98] flex items-center justify-center gap-2">
                 <i data-lucide="log-in" class="w-4 h-4"></i>
                 SIGN IN
             </button>

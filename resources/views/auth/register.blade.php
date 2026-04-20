@@ -15,7 +15,7 @@
                 Full Name <span class="text-red-500">*</span>
             </label>
             <input type="text" name="name" id="name" value="{{ old('name') }}" required autofocus
-                class="w-full px-4 py-2.5 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400"
+                class="app-input px-4 py-2.5 text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
                 placeholder="Nathaniel Dalisay">
             @error('name')
                 <p class="text-red-500 text-[11px] mt-1 font-medium">{{ $message }}</p>
@@ -28,7 +28,7 @@
                 Email Address <span class="text-red-500">*</span>
             </label>
             <input type="email" name="email" id="email" value="{{ old('email') }}" required
-                class="w-full px-4 py-2.5 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all placeholder:text-slate-400"
+                class="app-input px-4 py-2.5 text-slate-900 dark:text-slate-100 placeholder:text-slate-400"
                 placeholder="nathaniel@example.com">
             @error('email')
                 <p class="text-red-500 text-[11px] mt-1 font-medium">{{ $message }}</p>
@@ -42,7 +42,7 @@
                     Password <span class="text-red-500">*</span>
                 </label>
                 <input type="password" name="password" id="password" required
-                    class="w-full px-4 py-2.5 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all"
+                    class="app-input px-4 py-2.5"
                     placeholder="••••••••">
             </div>
             <div>
@@ -51,7 +51,7 @@
                     Confirm <span class="text-red-500">*</span>
                 </label>
                 <input type="password" name="password_confirmation" id="password_confirmation" required
-                    class="w-full px-4 py-2.5 rounded-[12px] border sidebar-border bg-white dark:bg-[#0d1117] focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500 outline-none transition-all"
+                    class="app-input px-4 py-2.5"
                     placeholder="••••••••">
             </div>
         </div>
@@ -61,7 +61,7 @@
 
         <div class="pt-4">
             <button type="submit"
-                class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-[12px] shadow-lg shadow-brand-500/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                class="app-btn app-btn-primary w-full py-3 font-bold active:scale-[0.98] flex items-center justify-center gap-2">
                 <i data-lucide="user-plus" class="w-4 h-4"></i>
                 CREATE ACCOUNT
             </button>

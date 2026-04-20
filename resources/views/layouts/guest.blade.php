@@ -11,15 +11,15 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
+<body class="app-shell bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
     <div class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2">
         <a href="{{ route('about') }}"
-            class="p-2 rounded-xl border sidebar-border bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-md hover:bg-white dark:hover:bg-[#21262d] transition-all shadow-sm text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-brand-500 dark:hover:text-brand-400">
+            class="app-btn app-btn-ghost p-2 text-xs font-medium shadow-sm">
             About Us
         </a>
 
         <button onclick="toggleTheme()"
-            class="p-2 rounded-xl border sidebar-border bg-white/50 dark:bg-[#161b22]/50 backdrop-blur-md hover:bg-white dark:hover:bg-[#21262d] transition-all shadow-sm">
+            class="app-btn app-btn-ghost p-2 shadow-sm">
             <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-slate-600"></i>
             <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-slate-400"></i>
         </button>
@@ -40,7 +40,7 @@
         </div>
 
         <div
-            class="w-[calc(100%-2rem)] sm:max-w-[380px] px-6 py-8 sm:px-8 sm:py-9 bg-white/70 dark:bg-[#161b22]/70 backdrop-blur-md border sidebar-border shadow-xl rounded-[10px] z-10">
+            class="app-panel w-[calc(100%-2rem)] sm:max-w-[380px] px-6 py-8 sm:px-8 sm:py-9 shadow-xl z-10">
             @yield('content')
         </div>
 

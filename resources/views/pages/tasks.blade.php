@@ -10,27 +10,27 @@
             <p class="text-slate-500 dark:text-slate-400 mt-1">Manage your workflow and focus areas.</p>
         </div>
         <div class="flex items-center gap-3 shrink-0">
-            <a href="{{ route('focus.suggest') }}" class="flex items-center gap-2 px-4 py-2.5 rounded-[10px] bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold text-sm hover:bg-indigo-100 transition-all border border-indigo-100 dark:border-indigo-900/50">
+            <a href="{{ route('focus.suggest') }}" class="app-btn app-btn-soft flex items-center gap-2 px-4 py-2.5 font-bold text-sm">
                 <i data-lucide="sparkles" class="w-4 h-4"></i>
                 Suggest Task
             </a>
-            <a href="{{ route('tasks.create') }}" class="flex items-center gap-2 px-5 py-2.5 rounded-[10px] bg-brand-600 text-white font-bold text-sm hover:bg-brand-700 shadow-lg shadow-brand-600/20 transition-all">
+            <a href="{{ route('tasks.create') }}" class="app-btn app-btn-primary flex items-center gap-2 px-5 py-2.5 font-bold text-sm">
                 <i data-lucide="plus" class="w-4 h-4"></i>
                 Add Task
             </a>
         </div>
     </header>
 
-    <div class="bg-slate-50/50 dark:bg-[#161b22]/50 border sidebar-border rounded-[10px] p-4 mb-8">
+    <div class="app-panel p-4 mb-8">
         <div class="flex flex-wrap gap-3 items-center">
             <div class="flex-[2_1_300px] relative group">
                 <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-brand-600 transition-colors"></i>
                 <input type="text" name="search" placeholder="Quick search tasks..." value="{{ request('search') }}" onkeyup="searchTasks(event)"
-                    class="w-full pl-11 pr-4 py-2.5 bg-white dark:bg-[#0d1117] border sidebar-border rounded-[10px] text-sm focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 outline-none transition-all dark:text-white">
+                    class="app-input pl-11 pr-4 py-2.5 text-sm dark:text-white">
             </div>
 
             <div class="flex-[1_1_160px]">
-                <select name="status" onchange="filterTasks(this)" class="w-full px-4 py-2.5 bg-white dark:bg-[#0d1117] border sidebar-border rounded-[10px] text-sm outline-none focus:border-brand-500 dark:text-slate-300">
+                <select name="status" onchange="filterTasks(this)" class="app-input px-4 py-2.5 text-sm dark:text-slate-300">
                     <option value="">All Status</option>
                     <option value="pending" {{ request('status') === 'pending' ? 'selected' : '' }}>Pending</option>
                     <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>Completed</option>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="flex-[1_1_160px]">
-                <select name="tag" onchange="filterTasks(this)" class="w-full px-4 py-2.5 bg-white dark:bg-[#0d1117] border sidebar-border rounded-[10px] text-sm outline-none focus:border-brand-500 dark:text-slate-300">
+                <select name="tag" onchange="filterTasks(this)" class="app-input px-4 py-2.5 text-sm dark:text-slate-300">
                     <option value="">All Tags</option>
                     @foreach($tags as $id => $name)
                         <option value="{{ $id }}" {{ request('tag') == $id ? 'selected' : '' }}>{{ $name }}</option>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="flex-[1_1_160px]">
-                <select name="deadline" onchange="filterTasks(this)" class="w-full px-4 py-2.5 bg-white dark:bg-[#0d1117] border sidebar-border rounded-[10px] text-sm outline-none focus:border-brand-500 dark:text-slate-300">
+                <select name="deadline" onchange="filterTasks(this)" class="app-input px-4 py-2.5 text-sm dark:text-slate-300">
                     <option value="">All Deadlines</option>
                     <option value="overdue" {{ request('deadline') === 'overdue' ? 'selected' : '' }}>Overdue</option>
                     <option value="today" {{ request('deadline') === 'today' ? 'selected' : '' }}>Today</option>
@@ -59,11 +59,12 @@
 
     <div class="space-y-4">
         @forelse($tasks as $task)
-            <div class="group bg-white dark:bg-[#161b22] border sidebar-border rounded-[10px] p-5 shadow-sm hover:shadow-xl hover:shadow-brand-500/5 transition-all">
+            <div class="app-card group p-5 hover:shadow-xl hover:shadow-brand-500/5 transition-all">
                 <div class="flex flex-wrap md:flex-nowrap items-start gap-4">
                     <div class="pt-1">
                         <input type="checkbox" {{ $task->status ? 'checked' : '' }} onchange="toggleTask({{ $task->id }})" 
-                            class="w-5 h-5 rounded-[4px] border-2 border-slate-300 dark:border-slate-700 text-brand-600 focus:ring-brand-500/20 transition-all cursor-pointer">
+                            class="w-5 h-5 border-2 border-slate-300 dark:border-slate-700 text-brand-600 focus:ring-brand-500/20 transition-all cursor-pointer"
+                            style="border-radius: 5px;">
                     </div>
 
                     <div class="flex-1 min-w-0">
@@ -83,13 +84,13 @@
                                     <i data-lucide="calendar" class="w-3.5 h-3.5 {{ $task->isOverdue() ? 'text-red-500' : 'text-slate-400' }}"></i>
                                     <span class="{{ $task->isOverdue() ? 'text-red-500' : 'text-slate-500 dark:text-slate-400' }}">
                                         {{ $task->deadline->format('M j, Y') }}
-                                        @if($task->isOverdue()) <span class="ml-1 text-[9px] bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded-[4px]">Overdue</span> @endif
+                                        @if($task->isOverdue()) <span class="app-badge app-badge-danger ml-1 px-1.5 py-0.5 text-[9px]">Overdue</span> @endif
                                     </span>
                                 </div>
                             @endif
 
                             <div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i>
+                                <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-600 dark:text-amber-300"></i>
                                 <span>{{ $task->priority }}</span>
                             </div>
 
@@ -98,7 +99,7 @@
                                     <i data-lucide="tag" class="w-3.5 h-3.5 text-slate-400"></i>
                                     <div class="flex gap-1">
                                         @foreach($task->systemTags as $tag)
-                                            <span class="text-[10px] px-2 py-0.5 rounded-[10px] border font-semibold" style="background-color: {{ $tag['color'] }}1a; color: {{ $tag['color'] }}; border-color: {{ $tag['color'] }}33;">
+                                            <span class="text-[10px] px-2 py-0.5 border font-semibold" style="background-color: {{ $tag['color'] }}1a; color: {{ $tag['color'] }}; border-color: {{ $tag['color'] }}33; border-radius: 5px;">
                                                 {{ $tag['name'] }}
                                             </span>
                                         @endforeach
@@ -109,12 +110,12 @@
                     </div>
 
                     <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <a href="{{ route('tasks.edit', $task) }}" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-[10px] text-slate-400 hover:text-brand-600 transition-colors">
+                        <a href="{{ route('tasks.edit', $task) }}" class="app-btn p-2 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-brand-600 transition-colors" style="border-radius: var(--ui-radius);">
                             <i data-lucide="edit-3" class="w-4 h-4"></i>
                         </a>
                         <form method="POST" action="{{ route('tasks.destroy', $task) }}" class="inline">
                             @csrf @method('DELETE')
-                            <button type="submit" class="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-[10px] text-slate-400 hover:text-red-600 transition-colors" onclick="return confirm('Delete this task?')">
+                            <button type="submit" class="app-btn p-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-400 hover:text-red-600 transition-colors" style="border-radius: var(--ui-radius);" onclick="return confirm('Delete this task?')">
                                 <i data-lucide="trash-2" class="w-4 h-4"></i>
                             </button>
                         </form>
@@ -122,13 +123,13 @@
                 </div>
             </div>
         @empty
-            <div class="text-center py-20 bg-slate-50/50 dark:bg-[#161b22]/50 border-2 border-dashed sidebar-border rounded-[10px]">
-                <div class="w-20 h-20 bg-slate-100 dark:bg-slate-800 rounded-[10px] flex items-center justify-center mx-auto mb-6">
+            <div class="app-panel text-center py-20 border-2 border-dashed">
+                <div class="app-muted w-20 h-20 flex items-center justify-center mx-auto mb-6">
                     <i data-lucide="inbox" class="w-10 h-10 text-slate-300 dark:text-slate-600"></i>
                 </div>
                 <h3 class="text-xl font-bold text-slate-800 dark:text-slate-100">No tasks found</h3>
                 <p class="text-slate-500 dark:text-slate-400 mt-2 max-w-xs mx-auto">Clear your filters or start fresh with a new entry.</p>
-                <a href="{{ route('tasks.create') }}" class="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-[10px] font-bold text-sm shadow-xl shadow-brand-600/20 hover:scale-105 transition-transform">
+                <a href="{{ route('tasks.create') }}" class="app-btn app-btn-primary mt-6 inline-flex items-center gap-2 px-6 py-3 font-bold text-sm hover:scale-105 transition-transform">
                     <i data-lucide="plus" class="w-4 h-4"></i> Create First Task
                 </a>
             </div>
