@@ -14,7 +14,7 @@ Unahin is a Laravel task management app built around one core idea: focus on wha
 - PHP 8.2+
 - Composer
 - Node.js and npm
-- MySQL 8+ or MariaDB
+- MySQL 8+
 
 ## Run Locally
 
