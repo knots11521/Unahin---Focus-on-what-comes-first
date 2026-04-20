@@ -14,11 +14,16 @@ Unahin is a Laravel task management app built around one core idea: focus on wha
 - PHP 8.2+
 - Composer
 - Node.js and npm
-- MySQL 8+ or MariaDB
+- MySQL 8+
 
 ## Run Locally
 
-1. Clone the project and open it in your terminal.
+1. Clone the project using:
+
+```bash
+git clone https://github.com/knots11521/Unahin---Focus-on-what-comes-first.git
+cd Unahin---Focus-on-what-comes-first
+```
 2. Install PHP dependencies:
 
 ```bash
