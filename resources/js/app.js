@@ -87,11 +87,18 @@ window.showToast = (message, type = "info") => {
 
     const toast = document.createElement("div");
     toast.className = `toast ${type}`;
-    toast.innerHTML = `
-        <span>${message}</span>
-        <button type="button" aria-label="Dismiss notification" onclick="this.parentElement.remove()">×</button>
-    `;
 
+    const text = document.createElement("span");
+    text.className = "toast-message text-center";
+    text.textContent = message;
+
+    const dismissButton = document.createElement("button");
+    dismissButton.type = "button";
+    dismissButton.setAttribute("aria-label", "Dismiss notification");
+    dismissButton.textContent = "×";
+    dismissButton.addEventListener("click", () => toast.remove());
+
+    toast.append(text, dismissButton);
     container.appendChild(toast);
 
     setTimeout(() => {

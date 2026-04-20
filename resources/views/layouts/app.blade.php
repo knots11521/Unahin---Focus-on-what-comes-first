@@ -36,7 +36,7 @@
 </head>
 
 <body
-    class="min-h-screen bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased">
+    class="app-shell min-h-screen bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased">
 
     <div id="toast-container"></div>
 
@@ -99,7 +99,7 @@
         </x-sidebar>
     @else
         <main
-            class="min-h-screen w-full bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 transition-colors duration-300">
+            class="app-shell min-h-screen w-full bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 transition-colors duration-300">
             <div class="w-full px-6 py-10 lg:px-10">
                 @yield('content')
             </div>

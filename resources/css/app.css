@@ -1,16 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+:root {
+    --ui-radius: 5px;
+    --ui-primary: #4f46e5;
+    --ui-primary-strong: #4338ca;
+    --ui-primary-soft: #eef2ff;
+    --ui-accent: #0f766e;
+    --ui-accent-strong: #115e59;
+    --ui-accent-soft: #ccfbf1;
+    --ui-highlight: #d97706;
+    --ui-highlight-strong: #b45309;
+    --ui-highlight-soft: #fef3c7;
+    --ui-danger: #dc2626;
+    --ui-danger-soft: #fee2e2;
+    --ui-border: #d0d7de;
+    --ui-surface: rgba(248, 250, 252, 0.82);
+    --ui-surface-strong: #ffffff;
+    --ui-surface-muted: #f8fafc;
+    --ui-dot: rgba(15, 23, 42, 0.16);
+}
+
+.dark {
+    --ui-primary: #818cf8;
+    --ui-primary-strong: #6366f1;
+    --ui-primary-soft: rgba(99, 102, 241, 0.14);
+    --ui-accent: #2dd4bf;
+    --ui-accent-strong: #14b8a6;
+    --ui-accent-soft: rgba(45, 212, 191, 0.14);
+    --ui-highlight: #fbbf24;
+    --ui-highlight-strong: #f59e0b;
+    --ui-highlight-soft: rgba(251, 191, 36, 0.14);
+    --ui-danger: #f87171;
+    --ui-danger-soft: rgba(248, 113, 113, 0.15);
+    --ui-border: #30363d;
+    --ui-surface: rgba(13, 17, 23, 0.86);
+    --ui-surface-strong: #161b22;
+    --ui-surface-muted: #0d1117;
+    --ui-dot: rgba(255, 255, 255, 0.11);
+}
+
+@layer base {
+    body {
+        background-color: #ffffff;
+        color: #0f172a;
+    }
+
+    .dark body {
+        background-color: #0d1117;
+        color: #f8fafc;
+    }
+}
+
+@layer components {
+    .app-shell {
+        background-color: transparent;
+        background-image: radial-gradient(var(--ui-dot) 1px, transparent 1px);
+        background-size: 22px 22px;
+        background-position: 0 0;
+    }
+
+    .app-card {
+        background: var(--ui-surface-strong);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .app-panel {
+        background: var(--ui-surface);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        backdrop-filter: blur(12px);
+    }
+
+    .app-muted {
+        background: var(--ui-surface-muted);
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+    }
+
+    .app-input {
+        width: 100%;
+        border: 1px solid var(--ui-border);
+        border-radius: var(--ui-radius);
+        background: var(--ui-surface-muted);
+        color: inherit;
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
+    }
+
+    .app-input:focus {
+        outline: none;
+        border-color: var(--ui-primary);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-primary) 14%, transparent);
+    }
+
+    .dark .app-input {
+        background: var(--ui-surface-muted);
+    }
+
+    .app-btn {
+        border-radius: var(--ui-radius);
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .app-btn-primary {
+        background: var(--ui-primary);
+        color: #fff;
+        box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-primary) 28%, transparent);
+    }
+
+    .app-btn-primary:hover {
+        background: var(--ui-primary-strong);
+    }
+
+    .app-btn-accent {
+        background: var(--ui-accent);
+        color: #fff;
+        box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-accent) 24%, transparent);
+    }
+
+    .app-btn-accent:hover {
+        background: var(--ui-accent-strong);
+    }
+
+    .app-btn-soft {
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        border: 1px solid color-mix(in srgb, var(--ui-primary) 24%, var(--ui-border));
+    }
+
+    .app-btn-soft:hover {
+        background: color-mix(in srgb, var(--ui-primary-soft) 70%, white);
+    }
+
+    .dark .app-btn-soft:hover {
+        background: color-mix(in srgb, var(--ui-primary-soft) 85%, #111827);
+    }
+
+    .app-btn-ghost {
+        background: var(--ui-surface-strong);
+        color: #475569;
+        border: 1px solid var(--ui-border);
+    }
+
+    .app-btn-ghost:hover {
+        background: var(--ui-surface-muted);
+        color: #0f172a;
+    }
+
+    .dark .app-btn-ghost {
+        color: #cbd5e1;
+    }
+
+    .dark .app-btn-ghost:hover {
+        color: #f8fafc;
+    }
+
+    .app-icon-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--ui-radius);
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        border: 1px solid color-mix(in srgb, var(--ui-primary) 18%, var(--ui-border));
+    }
+
+    .app-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        border-radius: var(--ui-radius);
+        border: 1px solid transparent;
+        font-weight: 700;
+    }
+
+    .app-badge-primary {
+        background: var(--ui-primary-soft);
+        color: var(--ui-primary);
+        border-color: color-mix(in srgb, var(--ui-primary) 18%, transparent);
+    }
+
+    .app-badge-accent {
+        background: var(--ui-accent-soft);
+        color: var(--ui-accent-strong);
+        border-color: color-mix(in srgb, var(--ui-accent) 18%, transparent);
+    }
+
+    .app-badge-highlight {
+        background: var(--ui-highlight-soft);
+        color: var(--ui-highlight-strong);
+        border-color: color-mix(in srgb, var(--ui-highlight) 18%, transparent);
+    }
+
+    .app-badge-danger {
+        background: var(--ui-danger-soft);
+        color: var(--ui-danger);
+        border-color: color-mix(in srgb, var(--ui-danger) 18%, transparent);
+    }
+}
 
 /* ================= SIDEBAR ================= */
 .sidebar-border {
-    border-color: #d0d7de;
+    border-color: var(--ui-border);
 }
 
 .dark .sidebar-border {
-    border-color: #30363d;
+    border-color: var(--ui-border);
 }
 
 .sidebar-collapsed {
@@ -22,12 +230,9 @@
 }
 
 .main-dotted-bg {
-    background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-    background-size: 24px 24px;
-}
-
-.dark .main-dotted-bg {
-    background-image: radial-gradient(#1e293b 1px, transparent 1px);
+    background-image: radial-gradient(var(--ui-dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: 0 0;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -106,36 +311,49 @@
 }
 
 .toast {
+    position: relative;
     min-width: 280px;
     max-width: 420px;
-    padding: 12px 16px;
-    border-radius: 12px;
+    width: min(420px, calc(100vw - 2rem));
+    padding: 12px 44px 12px 16px;
+    border-radius: var(--ui-radius);
     font-size: 13px;
     font-weight: 500;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     animation: fadeInSlide 0.3s ease;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.toast-message {
+    width: 100%;
+    text-align: center;
 }
 
 .toast.success {
-    background: #16a34a;
+    background: var(--ui-accent);
     color: white;
 }
 .toast.error {
-    background: #dc2626;
+    background: var(--ui-danger);
     color: white;
 }
 .toast.info {
-    background: #2563eb;
+    background: var(--ui-primary);
     color: white;
 }
 
 .toast button {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
     background: transparent;
     border: none;
     color: white;
     cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
 }

@@ -10,7 +10,7 @@
         <p class="text-slate-500 dark:text-slate-400 mt-1">Fill in the details to add a new focus item to your list.</p>
     </header>
 
-    <div class="bg-white dark:bg-[#161b22] border sidebar-border rounded-[10px] p-6 shadow-sm">
+    <div class="app-card p-6">
         <form action="{{ route('tasks.store') }}" method="POST">
             @csrf
             @include('components.task-form', [
