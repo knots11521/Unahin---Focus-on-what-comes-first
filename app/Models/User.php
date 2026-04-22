@@ -68,12 +68,14 @@ class User extends Authenticatable
             ->count();
     }
 
-    public function getCompletionProgressAttribute(): float
+    public function getCompletionProgressAttribute(): int
     {
         $total = $this->tasks()->count();
+
         if ($total === 0) {
             return 0;
         }
-        return ($this->completedTasks()->count() / $total) * 100;
+
+        return (int) floor(($this->completedTasks()->count() / $total) * 100);
     }
 }

@@ -98,7 +98,8 @@
     .app-input:focus {
         outline: none;
         border-color: var(--ui-primary);
-        box-shadow: 0 0 0 4px color-mix(in srgb, var(--ui-primary) 14%, transparent);
+        box-shadow: 0 0 0 4px
+            color-mix(in srgb, var(--ui-primary) 14%, transparent);
     }
 
     .dark .app-input {
@@ -118,7 +119,8 @@
     .app-btn-primary {
         background: var(--ui-primary);
         color: #fff;
-        box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-primary) 28%, transparent);
+        box-shadow: 0 14px 30px
+            color-mix(in srgb, var(--ui-primary) 28%, transparent);
     }
 
     .app-btn-primary:hover {
@@ -128,7 +130,8 @@
     .app-btn-accent {
         background: var(--ui-accent);
         color: #fff;
-        box-shadow: 0 14px 30px color-mix(in srgb, var(--ui-accent) 24%, transparent);
+        box-shadow: 0 14px 30px
+            color-mix(in srgb, var(--ui-accent) 24%, transparent);
     }
 
     .app-btn-accent:hover {
@@ -138,7 +141,8 @@
     .app-btn-soft {
         background: var(--ui-primary-soft);
         color: var(--ui-primary);
-        border: 1px solid color-mix(in srgb, var(--ui-primary) 24%, var(--ui-border));
+        border: 1px solid
+            color-mix(in srgb, var(--ui-primary) 24%, var(--ui-border));
     }
 
     .app-btn-soft:hover {
@@ -175,7 +179,8 @@
         border-radius: var(--ui-radius);
         background: var(--ui-primary-soft);
         color: var(--ui-primary);
-        border: 1px solid color-mix(in srgb, var(--ui-primary) 18%, var(--ui-border));
+        border: 1px solid
+            color-mix(in srgb, var(--ui-primary) 18%, var(--ui-border));
     }
 
     .app-badge {
@@ -303,7 +308,7 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 99999;
+    z-index: 100000; /* ensure above overlays */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -325,6 +330,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
 
 .toast-message {
@@ -332,17 +340,18 @@
     text-align: center;
 }
 
-.toast.success {
+/* ✅ Updated class names to match JS */
+.toast-success {
     background: var(--ui-accent);
-    color: white;
+    color: #fff;
 }
-.toast.error {
+.toast-error {
     background: var(--ui-danger);
-    color: white;
+    color: #fff;
 }
-.toast.info {
+.toast-info {
     background: var(--ui-primary);
-    color: white;
+    color: #fff;
 }
 
 .toast button {
@@ -352,8 +361,34 @@
     transform: translateY(-50%);
     background: transparent;
     border: none;
-    color: white;
+    color: #fff;
     cursor: pointer;
     font-size: 18px;
     line-height: 1;
+}
+
+/* Animation for fade-in */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sidebar-transition {
+    transition:
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional collapsed state (if you plan to toggle later) */
+.sidebar-hidden {
+    width: 0 !important;
+    overflow: hidden;
+    border: none !important;
+    padding: 0 !important;
 }

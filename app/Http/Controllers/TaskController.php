@@ -53,7 +53,7 @@ class TaskController extends Controller
         $tasks = $query->paginate(10);
         $tags = Tags::all();
 
-        return view('pages.tasks', compact('tasks', 'tags'));
+        return view('pages.tasks.index', compact('tasks', 'tags'));
     }
 
     public function create()
