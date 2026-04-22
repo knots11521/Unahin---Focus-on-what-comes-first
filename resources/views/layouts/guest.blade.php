@@ -11,18 +11,27 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="app-shell bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
+<body
+    class="app-shell bg-white dark:bg-[#0d1117] text-slate-900 dark:text-slate-100 font-sans antialiased overflow-x-hidden">
     <div class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2">
-        <a href="{{ route('about') }}"
-            class="app-btn app-btn-ghost p-2 text-xs font-medium shadow-sm">
+        <a href="{{ route('about') }}" class="app-btn app-btn-ghost p-2 text-xs font-medium shadow-sm">
             About Us
         </a>
 
-        <button onclick="toggleTheme()"
-            class="app-btn app-btn-ghost p-2 shadow-sm">
+        <button onclick="toggleTheme()" class="app-btn app-btn-ghost p-2 shadow-sm">
             <i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 block dark:hidden text-slate-600"></i>
             <i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 hidden dark:block text-slate-400"></i>
         </button>
+    </div>
+
+    <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-50">
+        <div class="mb-6">
+            <a href="{{ route('index') }}"
+                class="app-btn app-btn-ghost inline-flex items-center gap-2 px-4 py-2 text-sm font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Back
+            </a>
+        </div>
     </div>
 
     <div class="min-h-screen flex flex-col justify-center items-center py-12 main-dotted-bg relative">
@@ -39,8 +48,7 @@
             </a>
         </div>
 
-        <div
-            class="app-panel w-[calc(100%-2rem)] sm:max-w-[380px] px-6 py-8 sm:px-8 sm:py-9 shadow-xl z-10">
+        <div class="app-panel w-[calc(100%-2rem)] sm:max-w-[380px] px-6 py-8 sm:px-8 sm:py-9 shadow-xl z-10">
             @yield('content')
         </div>
 

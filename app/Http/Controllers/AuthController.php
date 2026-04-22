@@ -70,7 +70,7 @@ class AuthController extends Controller
 
     public function editProfile(Request $request)
     {
-        return view('pages.tasks.profile', [
+        return view('pages.profile', [
             'user' => $request->user(),
         ]);
     }
