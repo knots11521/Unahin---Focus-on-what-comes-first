@@ -74,8 +74,6 @@
                         border-slate-200 dark:border-slate-700 hover:text-indigo-600 transition-colors">
                         <i data-lucide="menu" class="w-5 h-5"></i>
                     </button>
-
-                    <h2 class="font-bold hidden sm:block">Overview</h2>
                 </div>
             </header>
 

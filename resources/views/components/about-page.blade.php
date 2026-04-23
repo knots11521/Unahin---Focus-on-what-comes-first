@@ -104,7 +104,7 @@
                         <i data-lucide="cpu" class="w-7 h-7"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Haji Sanches</h3>
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Hajji Sanches</h3>
                         <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">
                             Backend Support Engineer
                         </p>
